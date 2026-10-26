@@ -1,0 +1,57 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="background">
+    <ion-title>Wallet</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="background">
+  <div class="wallet-header-card">
+    <div class="wallet-balance">
+      <div class="left">
+        <span class="label">Total Coins</span>
+        <h2><ion-icon name="logo-bitcoin" color="warning"></ion-icon> {{ coins | number }}</h2>
+      </div>
+      <div class="right">
+        <span class="label">Worth</span>
+        <h3>₹ {{ money | number:'1.2-2' }}</h3>
+      </div>
+    </div>
+    
+    <div class="wallet-actions">
+      <ion-button class="action-btn withdraw" routerLink="/withdraw" shape="round">
+        <ion-icon name="cash-outline" slot="start"></ion-icon>
+        Withdraw
+      </ion-button>
+      <ion-button class="action-btn history" fill="outline" shape="round">
+        <ion-icon name="time-outline" slot="start"></ion-icon>
+        History
+      </ion-button>
+    </div>
+  </div>
+
+  <div class="transaction-history">
+    <h3>Recent Transactions</h3>
+    
+    <div class="empty-state" *ngIf="(transactions$ | async)?.length === 0">
+      <ion-icon name="receipt-outline"></ion-icon>
+      <p>No transactions yet</p>
+    </div>
+
+    <ion-list lines="full" class="tx-list" *ngIf="(transactions$ | async) as txItems">
+      <ng-container *ngIf="txItems && txItems.length > 0">
+        <ion-item *ngFor="let tx of txItems" class="tx-item">
+        <div slot="start" class="tx-icon" [ngClass]="tx.type">
+          <ion-icon [name]="tx.type === 'credit' ? 'arrow-down' : 'arrow-up'"></ion-icon>
+        </div>
+        <ion-label>
+          <h2>{{ tx.description }}</h2>
+          <p>{{ tx.date | date:'short' }}</p>
+        </ion-label>
+        <span slot="end" class="tx-amount" [ngClass]="tx.type">
+          {{ tx.type === 'credit' ? '+' : '-' }}{{ tx.amount }}
+        </span>
+      </ion-item>
+      </ng-container>
+    </ion-list>
+  </div>
+</ion-content>

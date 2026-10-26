@@ -1,0 +1,59 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="background">
+    <ion-title>Earn Coins</ion-title>
+    <ion-buttons slot="end">
+      <ion-badge color="warning" class="header-coin-badge">
+        <ion-icon name="logo-bitcoin"></ion-icon> {{ coins | number }}
+      </ion-badge>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="background">
+  <div class="watch-ad-section">
+    <ion-card class="ad-card">
+      <ion-card-content>
+        <div class="ad-image-placeholder">
+          <ion-icon name="play-circle"></ion-icon>
+        </div>
+        <h2>Watch Ad & Earn</h2>
+        <p>Earn 50 coins instantly! {{ remainingAds }} left today.</p>
+        <ion-button expand="block" shape="round" class="gradient-btn" (click)="watchAd()" [disabled]="isWatchingAd">
+          {{ isWatchingAd ? 'Loading Ad...' : 'Watch Now' }}
+        </ion-button>
+        <div class="cooldown-error" *ngIf="adError">{{adError}}</div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="tasks-section">
+    <div class="section-header">
+      <h3>Daily Tasks</h3>
+      <span>Reset in 12h</span>
+    </div>
+
+    <ion-list class="task-list">
+      <ion-item *ngFor="let task of tasks$ | async" class="task-item">
+        <div slot="start" class="task-icon" [ngClass]="'icon-' + task.type">
+          <ion-icon [name]="getTaskIcon(task.type)"></ion-icon>
+        </div>
+        <ion-label>
+          <h2>{{ task.title }}</h2>
+          <p>Reward: 
+            <ion-text color="warning"><b>+{{ task.reward }} Coins</b></ion-text>
+          </p>
+        </ion-label>
+        
+        <ion-button slot="end" 
+                    [color]="task.completed ? 'success' : 'primary'" 
+                    fill="outline" 
+                    shape="round" 
+                    [disabled]="task.completed"
+                    (click)="completeTask(task)">
+          {{ task.completed ? 'Done' : 'Claim' }}
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>

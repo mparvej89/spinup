@@ -1,0 +1,46 @@
+<ion-content color="background" class="ion-padding">
+  <div class="login-container">
+    <div class="logo">
+      <ion-icon name="game-controller"></ion-icon>
+    </div>
+    
+    <h1>Welcome to EarnZone</h1>
+    <p>Sign in to start earning rewards instantly.</p>
+
+    <div class="auth-box">
+      <ion-segment [(ngModel)]="authSegment" mode="ios">
+        <ion-segment-button value="phone">
+          <ion-label>Phone</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="email">
+          <ion-label>Email</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
+      <form (ngSubmit)="onLogin()" class="login-form">
+        <ion-item lines="none" class="input-item" *ngIf="authSegment === 'phone'">
+          <ion-icon name="call-outline" slot="start"></ion-icon>
+          <ion-input [(ngModel)]="phone" name="phone" type="tel" placeholder="Enter mobile number" required></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="input-item" *ngIf="authSegment === 'email'">
+          <ion-icon name="mail-outline" slot="start"></ion-icon>
+          <ion-input [(ngModel)]="email" name="email" type="email" placeholder="Enter email address"></ion-input>
+        </ion-item>
+
+        <ion-button expand="block" shape="round" type="submit" class="login-btn" [disabled]="!phone && !email">
+          Continue
+        </ion-button>
+      </form>
+
+      <div class="divider">
+        <span>OR</span>
+      </div>
+
+      <ion-button expand="block" shape="round" fill="outline" class="google-btn">
+        <ion-icon name="logo-google" slot="start"></ion-icon>
+        Continue with Google
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

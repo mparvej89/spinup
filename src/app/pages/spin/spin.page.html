@@ -1,0 +1,33 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="background">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Daily Spin</ion-title>
+    <ion-buttons slot="end">
+      <ion-badge color="warning">Spins left: {{ spinsLeft }}</ion-badge>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background" class="ion-padding">
+  <div class="spin-container">
+    <div class="pointer">▼</div>
+    <div class="wheel" [class.spinning]="isSpinning" [style.transform]="'rotate(' + currentRotation + 'deg)'">
+      <div class="slice" *ngFor="let reward of rewards; let i = index" [style.transform]="'rotate(' + (i * (360/rewards.length)) + 'deg)'">
+        <span class="reward-text">{{ reward }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="action-section">
+    <h2>Spin & Win!</h2>
+    <p>Try your luck to win up to 500 bonus coins.</p>
+    
+    <ion-button expand="block" shape="round" class="spin-btn" (click)="spinWheel()" [disabled]="isSpinning || spinsLeft <= 0">
+      {{ isSpinning ? 'SPINNING...' : 'SPIN NOW' }}
+    </ion-button>
+    
+    <p class="error-msg" *ngIf="spinsLeft <= 0">You've used all your spins for today.</p>
+  </div>
+</ion-content>

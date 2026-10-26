@@ -1,0 +1,39 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="background">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab1"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Refer & Earn</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background" class="ion-padding">
+  <div class="referral-banner">
+    <img src="https://ionicframework.com/docs/img/demos/avatar.svg" alt="Referral" />
+    <h2>Invite Friends & Earn</h2>
+    <p>Get <strong>500 Coins</strong> for every friend that signs up using your code.</p>
+  </div>
+
+  <ion-card class="code-card">
+    <ion-card-content>
+      <div class="code-label">Your Referral Code</div>
+      <div class="code-value" (click)="copyCode()">
+        {{ myCode }}
+        <ion-icon name="copy-outline"></ion-icon>
+      </div>
+      
+      <ion-button expand="block" shape="round" class="share-btn">
+        <ion-icon name="share-social" slot="start"></ion-icon>
+        Share Code
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <div class="apply-section">
+    <h3>Have a Referral Code?</h3>
+    <ion-item lines="none" class="input-item">
+      <ion-input [(ngModel)]="friendCode" placeholder="Enter code here"></ion-input>
+      <ion-button slot="end" color="primary" [disabled]="!friendCode" (click)="applyCode()">Apply</ion-button>
+    </ion-item>
+  </div>
+</ion-content>

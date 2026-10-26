@@ -1,0 +1,93 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="background">
+    <ion-title>
+      <div class="header-title">
+        <ion-avatar class="small-avatar">
+          <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ion-avatar>
+        <span>Hi, Earner!</span>
+      </div>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/login">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" color="background">
+  <div class="dashboard-header">
+    <ion-card class="balance-card">
+      <ion-card-content>
+        <div class="balance-top">
+          <div class="label">Total Balance</div>
+          <div class="currency">₹ {{ money | number:'1.2-2' }}</div>
+        </div>
+        <div class="balance-main">
+          <h2>
+            <ion-icon name="logo-bitcoin" color="warning"></ion-icon>
+            {{ coins | number }}
+          </h2>
+          <span class="sub-label">Coins</span>
+        </div>
+        
+        <ion-button expand="block" class="withdraw-btn" routerLink="/withdraw">
+          Withdraw Funds
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="quick-actions">
+    <h3>Quick Shortcuts</h3>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+          <div class="action-item" (click)="goToTasks()">
+            <div class="icon-wrap color-purple">
+              <ion-icon name="play"></ion-icon>
+            </div>
+            <span>Watch</span>
+          </div>
+        </ion-col>
+        <ion-col size="4">
+          <div class="action-item" routerLink="/spin">
+            <div class="icon-wrap color-gold">
+              <ion-icon name="aperture"></ion-icon>
+            </div>
+            <span>Spin</span>
+          </div>
+        </ion-col>
+        <ion-col size="4">
+          <div class="action-item" routerLink="/referral">
+            <div class="icon-wrap color-blue">
+              <ion-icon name="people"></ion-icon>
+            </div>
+            <span>Refer</span>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  
+  <div class="streak-section">
+    <ion-card class="streak-card">
+      <ion-card-header>
+        <ion-card-title>Weekly Streak</ion-card-title>
+        <ion-card-subtitle>Login every day to get bonus coins!</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="days-row">
+          <div class="day active">M</div>
+          <div class="day active">T</div>
+          <div class="day today">W</div>
+          <div class="day">T</div>
+          <div class="day">F</div>
+          <div class="day">S</div>
+          <div class="day">S</div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

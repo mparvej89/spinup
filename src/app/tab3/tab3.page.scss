@@ -1,0 +1,148 @@
+ion-content {
+  --background: #14141f;
+}
+
+.wallet-header-card {
+  margin: 15px;
+  background: linear-gradient(135deg, #1e1e2d, #2a2a3c);
+  border-radius: 24px;
+  padding: 20px;
+  border: 1px solid #33334c;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+
+  .wallet-balance {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+
+    .label {
+      color: #a0a0b8;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .left {
+      h2 {
+        color: #fff;
+        font-size: 32px;
+        font-weight: 800;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+    }
+
+    .right {
+      text-align: right;
+      h3 {
+        color: #40c4ff;
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0;
+      }
+    }
+  }
+
+  .wallet-actions {
+    display: flex;
+    gap: 10px;
+
+    .action-btn {
+      flex: 1;
+      height: 44px;
+      font-weight: 600;
+
+      &.withdraw {
+        --background: linear-gradient(90deg, #6200ea, #a742f5);
+      }
+      &.history {
+        --color: #fff;
+        --border-color: #33334c;
+      }
+    }
+  }
+}
+
+.transaction-history {
+  padding: 0 15px;
+
+  h3 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 30px 0;
+    color: #a0a0b8;
+
+    ion-icon {
+      font-size: 48px;
+      opacity: 0.5;
+      margin-bottom: 10px;
+    }
+  }
+
+  .tx-list {
+    background: transparent;
+
+    .tx-item {
+      --background: transparent;
+      --border-color: #33334c;
+      --padding-start: 0;
+      --inner-padding-end: 0;
+      margin-bottom: 5px;
+
+      .tx-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        margin-right: 15px;
+
+        &.credit {
+          background: rgba(0, 200, 83, 0.15);
+          color: #00e676;
+        }
+        &.debit {
+          background: rgba(255, 82, 82, 0.15);
+          color: #ff5252;
+        }
+      }
+
+      h2 {
+        color: #fff;
+        font-weight: 500;
+        font-size: 15px;
+      }
+
+      p {
+        color: #8c8c9a;
+        font-size: 12px;
+        margin-top: 4px;
+      }
+
+      .tx-amount {
+        font-weight: 600;
+        font-size: 16px;
+
+        &.credit {
+          color: #00e676;
+        }
+        &.debit {
+          color: #ff5252;
+        }
+      }
+    }
+  }
+}

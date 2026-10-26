@@ -1,0 +1,125 @@
+ion-content {
+  --background: #14141f;
+}
+
+.header-coin-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 12px;
+  margin-right: 10px;
+}
+
+.watch-ad-section {
+  padding: 10px;
+
+  .ad-card {
+    background: #1e1e2d;
+    border-radius: 20px;
+    border: 1px solid #33334c;
+    text-align: center;
+    padding-top: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+
+    .ad-image-placeholder {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 15px;
+      background: rgba(98, 0, 234, 0.1);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #b388ff;
+      font-size: 40px;
+    }
+
+    h2 {
+      color: #fff;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    p {
+      color: #a0a0b8;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .gradient-btn {
+      --background: linear-gradient(90deg, #6200ea, #a742f5);
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .cooldown-error {
+      color: #ff5252;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+  }
+}
+
+.tasks-section {
+  padding: 15px;
+
+  .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+
+    h3 {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+    }
+    span {
+      font-size: 12px;
+      color: #a0a0b8;
+    }
+  }
+
+  .task-list {
+    background: transparent;
+
+    .task-item {
+      --background: #1e1e2d;
+      --border-color: transparent;
+      --border-radius: 16px;
+      margin-bottom: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+
+      .task-icon {
+        width: 45px;
+        height: 45px;
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        margin-right: 15px;
+
+        &.icon-login { background: rgba(0, 200, 83, 0.2); color: #00e676; }
+        &.icon-ad { background: rgba(98, 0, 234, 0.2); color: #b388ff; }
+        &.icon-invite { background: rgba(0, 176, 255, 0.2); color: #40c4ff; }
+        &.icon-spin { background: rgba(255, 215, 0, 0.2); color: #ffd700; }
+      }
+
+      h2 {
+        color: #fff;
+        font-weight: 600;
+        font-size: 16px;
+      }
+
+      p {
+        color: #a0a0b8;
+        font-size: 13px;
+        margin-top: 4px;
+      }
+    }
+  }
+}

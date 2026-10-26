@@ -1,0 +1,35 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="background">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab3"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Withdraw Funds</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background" class="ion-padding">
+  <div class="withdraw-header">
+    <ion-icon name="cash" color="success"></ion-icon>
+    <h2>Available Balance</h2>
+    <div class="amount">₹ {{ money | number:'1.2-2' }}</div>
+    <p>Minimum withdrawal is ₹100</p>
+  </div>
+
+  <form (ngSubmit)="requestWithdrawal()" class="withdraw-form">
+    <ion-item lines="none" class="input-item">
+      <ion-label position="stacked">UPI ID</ion-label>
+      <ion-input [(ngModel)]="upiId" name="upiId" type="text" placeholder="yourname@upi" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="none" class="input-item">
+      <ion-label position="stacked">Amount (₹)</ion-label>
+      <ion-input [(ngModel)]="amount" name="amount" type="number" placeholder="Enter amount to withdraw" required></ion-input>
+    </ion-item>
+
+    <div class="error-msg" *ngIf="error">{{ error }}</div>
+
+    <ion-button expand="block" type="submit" class="submit-btn" shape="round" [disabled]="!upiId || !amount">
+      Submit Request
+    </ion-button>
+  </form>
+</ion-content>
